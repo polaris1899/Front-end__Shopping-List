@@ -8,9 +8,8 @@ function loadItems() {
 // Update the list with the given items
 function displayItems(items) {
     const container = document.querySelector('.items');
-    //const html = items.map(item => createHTMLString(item)).join('');
-    //console.log(html);
     container.innerHTML = items.map(item => createHTMLString(item)).join('');
+
 }
 
 // Create HTML list item from the given data item
@@ -25,8 +24,6 @@ function createHTMLString(item) {
 
 // Handle button click
 function onButtonClick(event, items) {
-    //console.log(event.target.dataset.key);
-    //console.log(event.target.dataset.value);
     const dataset = event.target.dataset;
     const key = dataset.key;
     const value = dataset.value;
@@ -35,15 +32,10 @@ function onButtonClick(event, items) {
         return;
     }
 
-    //1. const filtered = items.filter(item => item[key] === value);
-    //1.console.log(filtered);
+    const filtered = items.filter(item => item[key] === value);
     displayItems(filtered);
-
-    //2. 사용하자
-    //updateItems(items, key, value);
 }
 
-// 1. 이렇경우, 계속 데이터 로드를 해야하는 상황 발생
 function setEventListeners(items) {
     const logo = document.querySelector('.logo');
     const buttons = document.querySelector('.buttons');
@@ -51,8 +43,7 @@ function setEventListeners(items) {
     buttons.addEventListener('click', event => onButtonClick(event, items));
 }
 
-// 2. 데이터가 숨겼다가 나오게 함으로 더 효율적임
-/*function updateItems(items, key, value) {
+function updateItems(items, key, value) {
     const container = document.querySelector('.items');
     items.forEach(item => {
         if(items.dataset[key] === value){
@@ -62,12 +53,10 @@ function setEventListeners(items) {
         }
     });
     container.innerHTML = items.map(item => createHTMLString(item)).join('');
-}*/
+}
 
-// main
 loadItems()
     .then(items => {
-        //console.log(items);
         displayItems(items);
         setEventListeners(items);
     })

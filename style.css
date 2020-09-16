@@ -37,7 +37,7 @@ body {
 }
 
 .btn {
-  background-color: transparent; /*투명하게 만드는 방법*/
+  background-color: transparent; 
   border: none;
   outline: none;
   cursor: pointer;
@@ -64,6 +64,7 @@ body {
   font-size: var(--font-size);
   padding: calc(var(--base-space)*2);
   border-radius: var(--size-border);
+  margin-right: calc(var(--base-space)*2);
 }
 
 .blue {
@@ -84,6 +85,7 @@ body {
   list-style: none;
   padding-left: 0;
   overflow-y: scroll;
+  scroll-behavior: none;
 }
 
 .item {
@@ -97,9 +99,60 @@ body {
 .item__thumbnail {
   width: var(--size-thumbnail);
   height: var(--size-thumbnail);
+  margin-left: var(--base-space);
 }
 
 .item__description {
-  margin-left: var(--base-space);
+  margin-left: calc(var(--base-space)*2);
   font-size: var(--font-size);
+}
+
+/* For below 768px screen width */
+@media screen and (max-width:500px) {
+ :root {
+
+   /* size */
+  --base-space: 7px;
+  --size-button: 30px;
+  --size-border: 2px;
+  --size-thumbnail: 25px;
+  --font-size: 12px;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .imgBtn {
+    width: var(--size-button);
+    height: var(--size-button);
+  }
+  
+  .colorBtn {
+    font-size: var(--font-size);
+    padding: var(--base-space);
+    border-radius: var(--size-border);
+    margin-right: calc(var(--base-space)*2);
+  }
+
+  .items {
+    width: 70%;
+    height: 70%;
+  }
+  
+  .item {
+    padding: var(--base-space);
+    margin-bottom: var(--base-space);
+  }
+  
+  .item__thumbnail {
+    margin-left: var(--base-space);
+    width: var(--size-thumbnail);
+    height: var(--size-thumbnail);
+  }
+  
+  .item__description {
+    margin-left: calc(var(--base-space)*3);
+    font-size: var(--font-size);
+  }
 }
